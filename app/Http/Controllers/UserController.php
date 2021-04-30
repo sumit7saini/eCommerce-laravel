@@ -16,7 +16,13 @@ class UserController extends Controller
     	}
     	else {
     		$request->session()->put('user', $user);
+
     		return redirect('/');
     	}
+    }
+
+    function logout(Request $request) {
+    	$request->session()->pull('user');
+    	return redirect('/login');
     }
 }
